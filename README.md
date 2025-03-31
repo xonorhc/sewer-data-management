@@ -54,7 +54,7 @@ flowchart TB
 
 ### Modelo de dados lógico
 
-```sql
+```mermaid
 erDiagram
 	redes_esgoto }o--|| tipo_rede_esgoto : references
 	redes_esgoto }o--|| tipo_esgoto : references
