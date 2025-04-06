@@ -2,6 +2,10 @@
 
 Modelo de dados geoespaciais para sistemas de esgotamento sanitario.
 
+[PostgreSQL](https://www.postgresql.org/)
+
+[PostGIS](https://postgis.net/)
+
 ### Fluxograma
 
 Fluxo simplificado do esgoto, desde a ligacao na rede coletora ate o lancamento no efluente.
