@@ -2,3 +2,5 @@ CREATE DATABASE IF NOT EXISTS modelo_dados_saneamento;
 
 CREATE EXTENSION IF NOT EXISTS postgis;
 
+CREATE SCHEMA IF NOT EXISTS sistema_esgoto;
+
