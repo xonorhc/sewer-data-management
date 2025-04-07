@@ -1,9 +1,9 @@
-CREATE TABLE sistema_esgoto.tipo_material (
+CREATE TABLE :PGSCHEMA.tipo_material (
     id smallint PRIMARY KEY,
     tipo varchar UNIQUE NOT NULL
 );
 
-INSERT INTO sistema_esgoto.tipo_material
+INSERT INTO :PGSCHEMA.tipo_material
     VALUES (1, 'CA'),
     (2, 'Concreto'),
     (3, 'FoFo'),

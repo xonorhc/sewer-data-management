@@ -1,9 +1,9 @@
-CREATE TABLE sistema_esgoto.tipo_conexao (
+CREATE TABLE :PGSCHEMA.tipo_conexao (
     id smallint PRIMARY KEY,
     tipo varchar UNIQUE NOT NULL
 );
 
-INSERT INTO sistema_esgoto.tipo_conexao
+INSERT INTO :PGSCHEMA.tipo_conexao
     VALUES (1, 'Adaptador'),
     (2, 'CAP'),
     (3, 'Colar de tomada'),

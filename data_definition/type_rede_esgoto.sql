@@ -1,9 +1,9 @@
-CREATE TABLE sistema_esgoto.tipo_rede_esgoto (
+CREATE TABLE :PGSCHEMA.tipo_rede_esgoto (
     id smallint PRIMARY KEY,
     tipo varchar UNIQUE NOT NULL
 );
 
-INSERT INTO sistema_esgoto.tipo_rede_esgoto
+INSERT INTO :PGSCHEMA.tipo_rede_esgoto
     VALUES (1, 'Coletor'),
     (2, 'Coletor tronco'),
     (3, 'Interceptor'),

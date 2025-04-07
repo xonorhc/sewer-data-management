@@ -1,9 +1,9 @@
-CREATE TABLE sistema_esgoto.tipo_tratamento_tecnologia (
+CREATE TABLE :PGSCHEMA.tipo_tratamento_tecnologia (
     id smallint PRIMARY KEY,
     tipo varchar UNIQUE NOT NULL
 );
 
-INSERT INTO sistema_esgoto.tipo_tratamento_tecnologia
+INSERT INTO :PGSCHEMA.tipo_tratamento_tecnologia
     VALUES (1, 'Decantacao primaria'),
     (2, 'Lagoa anaerobica'),
     (3, 'Reator anaerobico'),

@@ -1,4 +1,4 @@
-CREATE OR REPLACE FUNCTION sistema_esgoto.atualizado_por ()
+CREATE OR REPLACE FUNCTION :PGSCHEMA.atualizado_por ()
     RETURNS TRIGGER
     LANGUAGE 'plpgsql'
     COST 100 VOLATILE NOT LEAKPROOF
