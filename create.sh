@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # create database
-psql -U postgres -h localhost -p 5432 -d postgres -c "create database if not exists modelo_dados_saneamento;"
+psql -U postgres -h localhost -p 5432 -d postgres -c "create database modelo_dados_saneamento;"
 
 # create extension
 psql -U postgres -h localhost -p 5432 -d modelo_dados_saneamento -c "create extension if not exists postgis;"
@@ -20,5 +20,5 @@ find $(dirname $0)/data_definition -name "type_*" \
     -exec psql -h localhost -p 5432 -d modelo_dados_saneamento -U postgres -f {} \;
 
 # create tables
-find $(dirname $0)/data_definition -name "table_*" \
-    -exec psql -h localhost -p 5432 -d modelo_dados_saneamento -U postgres -f {} \;
+find $(dirname $0)/data_definition -name "table_*" -print0 | sort -z | xargs -0 -I{} \
+    psql -h '10.17.1.2' -p '5432' -d 'topazio' -U 'golin' -f "{}" 
