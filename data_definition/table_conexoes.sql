@@ -14,7 +14,7 @@ CREATE TABLE sistema_esgoto.conexoes (
 CREATE INDEX ON sistema_esgoto.conexoes USING gist (geom);
 
 ALTER TABLE sistema_esgoto.conexoes
-    ADD COLUMN data_criacao timestamp
+    ADD COLUMN data_criacao timestamp,
     ADD COLUMN usuario_criacao varchar(20);
 
 CREATE OR REPLACE TRIGGER trig_inserido_por
@@ -23,7 +23,7 @@ CREATE OR REPLACE TRIGGER trig_inserido_por
     EXECUTE FUNCTION sistema_esgoto.inserido_por ();
 
 ALTER TABLE sistema_esgoto.conexoes
-    ADD COLUMN data_atualizacao timestamp
+    ADD COLUMN data_atualizacao timestamp,
     ADD COLUMN usuario_atualizacao varchar(20);
 
 CREATE OR REPLACE TRIGGER trig_atualizado_por
