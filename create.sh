@@ -21,4 +21,4 @@ find $(dirname $0)/data_definition -name "type_*" \
 
 # create tables
 find $(dirname $0)/data_definition -name "table_*" -print0 | sort -z | xargs -0 -I{} \
-    psql -h '10.17.1.2' -p '5432' -d 'topazio' -U 'golin' -f "{}" 
+    psql -h 'localhos' -p '5432' -d 'modelo_dados_saneamento' -U 'postgres' -f "{}" 
