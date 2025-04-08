@@ -13,21 +13,3 @@ CREATE TABLE :PGSCHEMA.conexoes (
 
 CREATE INDEX ON :PGSCHEMA.conexoes USING gist (geom);
 
-ALTER TABLE :PGSCHEMA.conexoes
-    ADD COLUMN data_criacao timestamp,
-    ADD COLUMN usuario_criacao varchar(20);
-
-CREATE OR REPLACE TRIGGER trig_inserido_por
-    BEFORE INSERT ON :PGSCHEMA.conexoes
-    FOR EACH ROW
-    EXECUTE FUNCTION :PGSCHEMA.inserido_por ();
-
-ALTER TABLE :PGSCHEMA.conexoes
-    ADD COLUMN data_atualizacao timestamp,
-    ADD COLUMN usuario_atualizacao varchar(20);
-
-CREATE OR REPLACE TRIGGER trig_atualizado_por
-    BEFORE UPDATE ON :PGSCHEMA.conexoes
-    FOR EACH ROW
-    EXECUTE FUNCTION :PGSCHEMA.atualizado_por ();
-

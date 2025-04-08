@@ -17,21 +17,3 @@ CREATE TABLE :PGSCHEMA.valvulas (
 
 CREATE INDEX ON :PGSCHEMA.valvulas USING gist (geom);
 
-ALTER TABLE :PGSCHEMA.valvulas
-    ADD COLUMN data_criacao timestamp,
-    ADD COLUMN usuario_criacao varchar(20);
-
-CREATE OR REPLACE TRIGGER trig_inserido_por
-    BEFORE INSERT ON :PGSCHEMA.valvulas
-    FOR EACH ROW
-    EXECUTE FUNCTION :PGSCHEMA.inserido_por ();
-
-ALTER TABLE :PGSCHEMA.valvulas
-    ADD COLUMN data_atualizacao timestamp,
-    ADD COLUMN usuario_atualizacao varchar(20);
-
-CREATE OR REPLACE TRIGGER trig_atualizado_por
-    BEFORE UPDATE ON :PGSCHEMA.valvulas
-    FOR EACH ROW
-    EXECUTE FUNCTION :PGSCHEMA.atualizado_por ();
-

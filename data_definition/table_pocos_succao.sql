@@ -18,21 +18,3 @@ CREATE TABLE :PGSCHEMA.pocos_succao (
 
 CREATE INDEX ON :PGSCHEMA.pocos_succao USING gist (geom);
 
-ALTER TABLE :PGSCHEMA.pocos_succao
-    ADD COLUMN data_criacao timestamp,
-    ADD COLUMN usuario_criacao varchar(20);
-
-CREATE OR REPLACE TRIGGER trig_inserido_por
-    BEFORE INSERT ON :PGSCHEMA.pocos_succao
-    FOR EACH ROW
-    EXECUTE FUNCTION :PGSCHEMA.inserido_por ();
-
-ALTER TABLE :PGSCHEMA.pocos_succao
-    ADD COLUMN data_atualizacao timestamp,
-    ADD COLUMN usuario_atualizacao varchar(20);
-
-CREATE OR REPLACE TRIGGER trig_atualizado_por
-    BEFORE UPDATE ON :PGSCHEMA.pocos_succao
-    FOR EACH ROW
-    EXECUTE FUNCTION :PGSCHEMA.atualizado_por ();
-
