@@ -8,7 +8,7 @@ CREATE TABLE :PGSCHEMA.bombas (
     vazao numeric(6, 2) CHECK (vazao BETWEEN 0 AND 5000),
     potencia numeric(6, 2) CHECK (potencia BETWEEN 0 AND 1000),
     pressao numeric(4, 1) CHECK (pressao BETWEEN 0 AND 200),
-    situacao smallint REFERENCES :PGSCHEMA.tipo_situacao (id) NOT NULL,
+    situacao smallint REFERENCES :PGSCHEMA.tipo_situacao (id) NOT NULL DEFAULT 1,
     localizacao varchar(255),
     observacoes varchar(255)
 );

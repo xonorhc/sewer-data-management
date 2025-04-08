@@ -6,6 +6,7 @@ CREATE TABLE :PGSCHEMA.lancamentos_efluente (
     esgoto smallint REFERENCES :PGSCHEMA.tipo_esgoto (id) NOT NULL, -- TODO: Function to update from redes_esgoto
     tipo_corpo_receptor smallint REFERENCES :PGSCHEMA.tipo_manancial (id),
     nome_corpo_receptor varchar, -- ISSUE: references hidrografia
+    situacao smallint REFERENCES :PGSCHEMA.tipo_situacao (id) ON DELETE RESTRICT NOT NULL DEFAULT 1,
     localizacao varchar(255),
     observacoes varchar(255)
 );

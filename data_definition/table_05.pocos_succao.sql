@@ -12,6 +12,7 @@ CREATE TABLE :PGSCHEMA.pocos_succao (
     forma_tampao smallint REFERENCES :PGSCHEMA.tipo_forma (id),
     material_tampao smallint REFERENCES :PGSCHEMA.tipo_material (id),
     diametro_tampao smallint CHECK (diametro_tampao BETWEEN 0 AND 1200),
+    situacao smallint REFERENCES :PGSCHEMA.tipo_situacao (id) NOT NULL DEFAULT 1,
     localizacao varchar(255),
     observacoes varchar(255)
 );

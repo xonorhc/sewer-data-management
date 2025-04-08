@@ -22,17 +22,17 @@ psql -U $PGUSER -h $PGHOST -p $PGPORT -d $PGDATABASE \
 # find $(dirname $0)/data_definition -name "*.sql" -exec echo {} \;
 
 # create types/tables
-find $(dirname $0)/data_definition -type f -name "type*" -exec \
+find $(dirname $0)/data_definition -type f -name "type_*" -exec \
   psql -U $PGUSER -h $PGHOST -p $PGPORT -d $PGDATABASE -b --variable=PGSCHEMA=$PGSCHEMA \
   -f {} \;
 
 # create tables
-find $(dirname $0)/data_definition -type f -name "table*" -print0 | sort -z | xargs -0 -I{} \
+find $(dirname $0)/data_definition -type f -name "table_*" -print0 | sort -z | xargs -0 -I{} \
   psql -U $PGUSER -h $PGHOST -p $PGPORT -d $PGDATABASE -b --variable=PGSCHEMA=$PGSCHEMA \
   --variable=SRID=$SRID \
   -f "{}"
 
 # create functions
-find $(dirname $0)/data_definition -type f -name "function*" -exec \
+find $(dirname $0)/data_definition -type f -name "function_*" -exec \
   psql -U $PGUSER -h $PGHOST -p $PGPORT -d $PGDATABASE -b --variable=PGSCHEMA=$PGSCHEMA \
   -f {} \;
