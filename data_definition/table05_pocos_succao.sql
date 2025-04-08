@@ -1,7 +1,7 @@
 CREATE TABLE :PGSCHEMA.pocos_succao (
     id serial PRIMARY KEY,
-    geom GEOMETRY(point, 4674) UNIQUE NOT NULL,
-    id_estacao_elevatoria smallint REFERENCES :PGSCHEMA.estacoes_elevatorias (id),
+    geom GEOMETRY(point, :SRID) UNIQUE NOT NULL,
+    id_estacao_elevatoria smallint REFERENCES :PGSCHEMA.estacoes_elevatorias (id) ON DELETE SET NULL, -- TODO: Function to update from estacoes_elevatorias
     cota_nivel numeric(6, 3) CHECK (cota_nivel BETWEEN 0 AND 1000),
     cota_fundo numeric(6, 3) CHECK (cota_fundo BETWEEN 0 AND 1000),
     profundidade numeric(3, 2) CHECK (profundidade BETWEEN 0 AND 10),

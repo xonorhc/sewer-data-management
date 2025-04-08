@@ -1,6 +1,6 @@
 CREATE TABLE :PGSCHEMA.unidades_inspecao (
     id serial PRIMARY KEY,
-    geom geometry(point, 4674) UNIQUE NOT NULL,
+    geom geometry(point, :SRID) UNIQUE NOT NULL, -- TODO: Function to connect on redes_esgoto
     tipo smallint REFERENCES :PGSCHEMA.tipo_unidade_inspecao (id) NOT NULL,
     forma smallint REFERENCES :PGSCHEMA.tipo_forma (id),
     material smallint REFERENCES :PGSCHEMA.tipo_material (id),

@@ -1,6 +1,6 @@
 CREATE TABLE :PGSCHEMA.conexoes (
     id serial PRIMARY KEY,
-    geom geometry(point, 4674) UNIQUE NOT NULL,
+    geom geometry(point, :SRID) UNIQUE NOT NULL,
     tipo smallint REFERENCES :PGSCHEMA.tipo_conexao (id) NOT NULL,
     material smallint REFERENCES :PGSCHEMA.tipo_material (id) NOT NULL,
     diametro_entrada smallint CHECK (diametro_entrada BETWEEN 0 AND 1000) NOT NULL,

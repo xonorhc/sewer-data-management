@@ -5,6 +5,7 @@ PGPORT=5432
 PGUSER=postgres
 PGDATABASE=modelo_dados_saneamento
 PGSCHEMA=sistema_esgoto
+SRID=4674
 
 # create database
 psql -U $PGUSER -h $PGHOST -p $PGPORT -d 'postgres' \
@@ -28,6 +29,7 @@ find $(dirname $0)/data_definition -type f -name "type*" -exec \
 # create tables
 find $(dirname $0)/data_definition -type f -name "table*" -print0 | sort -z | xargs -0 -I{} \
   psql -U $PGUSER -h $PGHOST -p $PGPORT -d $PGDATABASE -b --variable=PGSCHEMA=$PGSCHEMA \
+  --variable=SRID=$SRID \
   -f "{}"
 
 # create functions
