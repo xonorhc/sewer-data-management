@@ -21,7 +21,7 @@ psql -U $PGUSER -h $PGHOST -p $PGPORT -d $PGDATABASE \
 
 # find $(dirname $0)/data_definition -name "*.sql" -exec echo {} \;
 
-# create types/tables
+# create table types
 find $(dirname $0)/data_definition -type f -name "type_*" -exec \
   psql -U $PGUSER -h $PGHOST -p $PGPORT -d $PGDATABASE -b --variable=PGSCHEMA=$PGSCHEMA \
   -f {} \;
@@ -33,6 +33,6 @@ find $(dirname $0)/data_definition -type f -name "table_*" -print0 | sort -z | x
   -f "{}"
 
 # create functions
-find $(dirname $0)/data_definition -type f -name "function_*" -exec \
+find $(dirname $0)/functions -type f -name "function_*" -exec \
   psql -U $PGUSER -h $PGHOST -p $PGPORT -d $PGDATABASE -b --variable=PGSCHEMA=$PGSCHEMA \
   -f {} \;
