@@ -26,4 +26,3 @@ GROUP BY
     ts.tipo,
     ee.localizacao,
     ee.observacoes;
-
