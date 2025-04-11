@@ -1,5 +1,6 @@
-SET search_path TO sistema_esgoto, public;
+SET search_path TO :PGSCHEMA, public;
 
+CREATE MATERIALIZED VIEW IF NOT EXISTS :MVSCHEMA.se_valvulas AS
 SELECT
     v.id,
     v.geom,
@@ -28,4 +29,10 @@ WHERE
             WHERE
                 geom IS NOT NULL
                 AND situacao = 1));
+
+CREATE INDEX ON :MVSCHEMA.se_valvulas USING gist (geom);
+
+CREATE UNIQUE INDEX ON :MVSCHEMA.se_valvulas (id);
+
+GRANT SELECT ON :MVSCHEMA.se_valvulas TO PUBLIC;
 
