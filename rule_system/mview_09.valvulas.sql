@@ -4,7 +4,7 @@ CREATE MATERIALIZED VIEW IF NOT EXISTS :MVSCHEMA.se_valvulas AS
 SELECT
     v.id,
     v.geom,
-    v.tipo,
+    tv.tipo,
     tvf.tipo AS funcao,
     v.diametro,
     tva.tipo AS acionamento,

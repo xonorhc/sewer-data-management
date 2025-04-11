@@ -4,7 +4,7 @@ CREATE MATERIALIZED VIEW IF NOT EXISTS :MVSCHEMA.se_unidades_inspecao AS
 SELECT
     ui.id,
     ui.geom,
-    ui.tipo,
+    tui.tipo,
     tf.tipo AS forma,
     tm.tipo AS material,
     ui.diametro,
@@ -33,8 +33,7 @@ WHERE
                 st_collect (geom) AS geom FROM redes_esgoto
             WHERE
                 geom IS NOT NULL
-                AND situacao = 1))
-    AND ui.material <> ui.material_tampao;
+                AND situacao = 1));
 
 CREATE INDEX ON :MVSCHEMA.se_unidades_inspecao USING gist (geom);
 
