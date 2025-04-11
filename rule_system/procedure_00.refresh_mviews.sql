@@ -1,5 +1,4 @@
--- NOTE: Procedimento para refresh de todas as materialized views.
-CREATE OR REPLACE PROCEDURE cadastro_tecnico.refresh_mviews ()
+CREATE OR REPLACE PROCEDURE :MVSCHEMA.refresh_mviews ()
 LANGUAGE plpgsql
 SECURITY DEFINER
 AS $$
@@ -17,7 +16,7 @@ BEGIN
     LEFT JOIN pg_catalog.pg_namespace n ON (n.oid = c.relnamespace)
 WHERE
     c.relkind = 'm'
-        AND n.nspname LIKE 'cadastro_tecnico'
+        AND n.nspname LIKE :'MVSCHEMA' -- FIX: Double cote is literal and don't return variable value from terminal
     ORDER BY
         1,
         2 LOOP
@@ -29,7 +28,5 @@ WHERE
 END;
 $$;
 
--- NOTE: Configuracao de privilegio para execucao do procedimento pelo grupo de edicao do Cadastro Tecnico.
-GRANT EXECUTE ON PROCEDURE cadastro_tecnico.refresh_mviews () TO grupo_geotecnologia;
-
-CALL cadastro_tecnico.refresh_mviews ();
+-- GRANT EXECUTE ON PROCEDURE :MVSCHEMA.refresh_mviews () TO group_dba;
+-- CALL :MVSCHEMA.refresh_mviews ();
