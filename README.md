@@ -6,9 +6,24 @@ Modelo de dados geoespaciais para sistemas de esgotamento sanitario.
 
 [PostGIS](https://postgis.net/)
 
+## Analise de Requisitos
+
+<!-- ### Requisitos funcionais -->
+<!---->
+<!-- 1. Qual que e o problema que eu estou tentando resolver? -->
+<!-- 1. O que voce espera que o sistema faca? -->
+<!-- 1. Existe alguma restricao? -->
+<!---->
+<!-- 1. Must Have: -->
+<!-- 1. Should Have: -->
+<!-- 1. Could Have: -->
+<!-- 1. Won't Have: -->
+<!---->
+<!-- ### Requisitos nao funcionais -->
+
 ### Fluxograma
 
-Fluxo simplificado do esgoto, desde a ligacao na rede coletora ate o lancamento no efluente.
+Fluxo simplificado desde a ligacao na rede coletora ate o lancamento do efluente.
 
 ```mermaid
 flowchart TB

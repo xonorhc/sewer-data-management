@@ -3,7 +3,7 @@ SET search_path TO sistema_esgoto, public;
 SELECT
     v.id,
     v.geom,
-    v.tipo,
+    tv.tipo,
     tvf.tipo AS funcao,
     v.diametro,
     tva.tipo AS acionamento,

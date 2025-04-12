@@ -3,7 +3,7 @@ SET search_path TO sistema_esgoto, public;
 SELECT
     ui.id,
     ui.geom,
-    ui.tipo,
+    tui.tipo,
     tf.tipo AS forma,
     tm.tipo AS material,
     ui.diametro,
@@ -32,5 +32,4 @@ WHERE
                 st_collect (geom) AS geom FROM redes_esgoto
             WHERE
                 geom IS NOT NULL
-                AND situacao = 1))
-    AND ui.material <> ui.material_tampao;
+                AND situacao = 1));
