@@ -23,3 +23,4 @@ WHERE
             WHERE
                 geom IS NOT NULL
                 AND situacao = 1));
+

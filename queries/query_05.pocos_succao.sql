@@ -3,7 +3,8 @@ SET search_path TO sistema_esgoto, public;
 SELECT
     ps.id,
     ps.geom,
-    concat(ee.id || ' - ', ee.nome) AS estacao_elevatoria,
+    ee.id AS id_estacao_elevatoria,
+    ee.nome AS nome_estacao_elevatoria,
     ps.cota_nivel,
     ps.cota_fundo,
     ps.profundidade,

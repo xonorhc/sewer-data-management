@@ -4,7 +4,8 @@ CREATE MATERIALIZED VIEW IF NOT EXISTS :MVSCHEMA.se_pocos_succao AS
 SELECT
     ps.id,
     ps.geom,
-    concat(ee.id || ' - ', ee.nome) AS estacao_elevatoria,
+    ee.id AS id_estacao_elevatoria,
+    ee.nome AS nome_estacao_elevatoria,
     ps.cota_nivel,
     ps.cota_fundo,
     ps.profundidade,

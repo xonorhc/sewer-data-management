@@ -9,24 +9,25 @@ SELECT
     ts.tipo AS situacao,
     ee.localizacao,
     ee.observacoes,
-    string_agg('B' || b.id::text, ',') AS bomba_id,
-    string_agg('PS' || ps.id::text, ',') AS poco_succao_id
+    array_agg(DISTINCT b.id) AS id_bomba,
+    array_agg(DISTINCT ps.id) AS id_poco_succao
 FROM
     estacoes_elevatorias ee
     LEFT JOIN tipo_esgoto te ON te.id = ee.esgoto
     LEFT JOIN tipo_situacao ts ON ts.id = ee.situacao
-    LEFT JOIN bombas b ON st_contains (ee.geom, b.geom)
-    LEFT JOIN pocos_succao ps ON st_contains (ee.geom, ps.geom)
+    LEFT JOIN ( SELECT id, geom
+        FROM bombas
+        WHERE situacao = 1) b ON st_contains (ee.geom, b.geom)
+    LEFT JOIN ( SELECT id, geom
+        FROM pocos_succao
+        WHERE geom IS NOT NULL) ps ON st_contains (ee.geom, ps.geom)
 WHERE
     ee.geom IS NOT NULL
 GROUP BY
     ee.id,
-    ee.geom,
-    ee.nome,
     te.tipo,
-    ts.tipo,
-    ee.localizacao,
-    ee.observacoes;
+    ts.tipo;
+
 
 CREATE INDEX ON :MVSCHEMA.se_estacoes_elevatorias USING gist (geom);
 
