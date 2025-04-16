@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 PGHOST=localhost
 PGPORT=5432
@@ -20,7 +20,6 @@ psql -U $PGUSER -h $PGHOST -p $PGPORT -d $PGDATABASE \
   -c "create schema if not exists $PGSCHEMA;"
 
 # find $(dirname $0)/data_definition -name "*.sql" -exec echo {} \;
-
 # create table types
 find $(dirname $0)/data_definition -type f -name "type_*" -exec \
   psql -U $PGUSER -h $PGHOST -p $PGPORT -d $PGDATABASE -b --variable=PGSCHEMA=$PGSCHEMA \
