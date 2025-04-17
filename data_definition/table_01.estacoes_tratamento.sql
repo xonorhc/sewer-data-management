@@ -1,3 +1,4 @@
+
 CREATE TABLE :PGSCHEMA.estacoes_tratamento (
     id serial PRIMARY KEY,
     geom geometry(point, :SRID) UNIQUE NOT NULL,
