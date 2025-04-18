@@ -1,4 +1,4 @@
-CREATE TABLE :PGSCHEMA.estacoes_elevatorias (
+CREATE TABLE IF NOT EXISTS :PGSCHEMA.estacoes_elevatorias (
     id serial PRIMARY KEY,
     geom geometry(polygon, :SRID) NOT NULL,
     nome varchar(50) UNIQUE NOT NULL,

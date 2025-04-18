@@ -1,4 +1,4 @@
-CREATE TABLE :PGSCHEMA.pocos_succao (
+CREATE TABLE IF NOT EXISTS :PGSCHEMA.pocos_succao (
     id serial PRIMARY KEY,
     geom GEOMETRY(point, :SRID) UNIQUE NOT NULL,
     id_estacao_elevatoria smallint REFERENCES :PGSCHEMA.estacoes_elevatorias (id) ON UPDATE CASCADE ON DELETE SET NULL, -- TODO: Function to update from estacoes_elevatorias
@@ -16,6 +16,22 @@ CREATE TABLE :PGSCHEMA.pocos_succao (
     localizacao varchar(255),
     observacoes varchar(255)
 );
+
+COMMENT ON COLUMN :PGSCHEMA.pocos_succao.cota_nivel IS 'NOTE : Metros (m)';
+
+COMMENT ON COLUMN :PGSCHEMA.pocos_succao.cota_fundo IS 'NOTE : Metros (m)';
+
+COMMENT ON COLUMN :PGSCHEMA.pocos_succao.profundidade IS 'NOTE : Metros (m)';
+
+COMMENT ON COLUMN :PGSCHEMA.pocos_succao.diametro IS 'NOTE : Metros (m)';
+
+COMMENT ON COLUMN :PGSCHEMA.pocos_succao.volume IS 'NOTE : Metros cubicos (m3)';
+
+COMMENT ON COLUMN :PGSCHEMA.pocos_succao.nivel_min IS 'NOTE : Metros (m)';
+
+COMMENT ON COLUMN :PGSCHEMA.pocos_succao.nivel_max IS 'NOTE : Metros (m)';
+
+COMMENT ON COLUMN :PGSCHEMA.pocos_succao.diametro_tampao IS 'NOTE : Milimetros (mm)';
 
 CREATE INDEX ON :PGSCHEMA.pocos_succao USING gist (geom);
 

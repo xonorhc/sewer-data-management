@@ -1,4 +1,4 @@
-CREATE TABLE :PGSCHEMA.valvulas (
+CREATE TABLE IF NOT EXISTS :PGSCHEMA.valvulas (
     id serial PRIMARY KEY,
     geom GEOMETRY(point, :SRID) UNIQUE NOT NULL, -- TODO: Function to connect on redes_esgoto
     tipo smallint REFERENCES :PGSCHEMA.tipo_valvula (id) NOT NULL,
@@ -13,6 +13,10 @@ CREATE TABLE :PGSCHEMA.valvulas (
     localizacao varchar(255),
     observacoes varchar(255)
 );
+
+COMMENT ON COLUMN :PGSCHEMA.valvulas.diametro IS 'NOTE : Diametro nominal (dn) em milimetros (mm)';
+
+COMMENT ON COLUMN :PGSCHEMA.valvulas.profundidade IS 'NOTE : Metros (m)';
 
 CREATE INDEX ON :PGSCHEMA.valvulas USING gist (geom);
 

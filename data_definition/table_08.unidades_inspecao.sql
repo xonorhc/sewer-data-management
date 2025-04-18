@@ -1,10 +1,10 @@
-CREATE TABLE :PGSCHEMA.unidades_inspecao (
+CREATE TABLE IF NOT EXISTS :PGSCHEMA.unidades_inspecao (
     id serial PRIMARY KEY,
-    geom geometry(point, :SRID) UNIQUE NOT NULL, -- TODO: Function to connect on redes_esgoto
+    geom geometry(point, :SRID) UNIQUE NOT NULL, -- TODO: Function to snapping on redes_esgoto
     tipo smallint REFERENCES :PGSCHEMA.tipo_unidade_inspecao (id) NOT NULL,
-    forma smallint REFERENCES :PGSCHEMA.tipo_forma (id),
-    material smallint REFERENCES :PGSCHEMA.tipo_material (id),
-    diametro smallint CHECK (diametro BETWEEN 0 AND 2000),
+    forma smallint REFERENCES :PGSCHEMA.tipo_forma (id) NOT NULL,
+    material smallint REFERENCES :PGSCHEMA.tipo_material (id) NOT NULL,
+    diametro smallint CHECK (diametro BETWEEN 0 AND 2000) NOT NULL,
     cota_nivel numeric(6, 3) CHECK (cota_nivel BETWEEN 0 AND 1000),
     cota_fundo numeric(6, 3) CHECK (cota_fundo BETWEEN 0 AND 1000),
     profundidade numeric(3, 2) CHECK (profundidade BETWEEN 0 AND 10),
@@ -18,6 +18,20 @@ CREATE TABLE :PGSCHEMA.unidades_inspecao (
     localizacao varchar(255),
     observacoes varchar(255)
 );
+
+COMMENT ON COLUMN :PGSCHEMA.unidades_inspecao.diametro IS 'NOTE : Diametro nominal (dn) em milimetros (mm)';
+
+COMMENT ON COLUMN :PGSCHEMA.unidades_inspecao.cota_nivel IS 'NOTE : Metros (m)';
+
+COMMENT ON COLUMN :PGSCHEMA.unidades_inspecao.cota_fundo IS 'NOTE : Metros (m)';
+
+COMMENT ON COLUMN :PGSCHEMA.unidades_inspecao.profundidade IS 'NOTE : Metros (m)';
+
+COMMENT ON COLUMN :PGSCHEMA.unidades_inspecao.diametro_tampao IS 'NOTE : Diametro nominal (dn) em milimetros (mm)';
+
+COMMENT ON COLUMN :PGSCHEMA.unidades_inspecao.cota_extravasor IS 'NOTE : Metros (m)';
+
+COMMENT ON COLUMN :PGSCHEMA.unidades_inspecao.profundidade_extravasor IS 'NOTE : Metros (m)';
 
 CREATE INDEX ON :PGSCHEMA.unidades_inspecao USING gist (geom);
 
