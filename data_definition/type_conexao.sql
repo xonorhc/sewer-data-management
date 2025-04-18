@@ -1,8 +1,8 @@
+BEGIN;
 CREATE TABLE :PGSCHEMA.tipo_conexao (
     id smallint PRIMARY KEY,
     tipo varchar UNIQUE NOT NULL
 );
-
 INSERT INTO :PGSCHEMA.tipo_conexao
     VALUES (1, 'Adaptador'),
     (2, 'CAP'),
@@ -13,4 +13,5 @@ INSERT INTO :PGSCHEMA.tipo_conexao
     (7, 'Reducao'),
     (8, 'TE'),
     (9, 'Ventosa');
+COMMIT;
 

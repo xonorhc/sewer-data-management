@@ -1,8 +1,8 @@
+BEGIN;
 CREATE TABLE :PGSCHEMA.tipo_material (
     id smallint PRIMARY KEY,
     tipo varchar UNIQUE NOT NULL
 );
-
 INSERT INTO :PGSCHEMA.tipo_material
     VALUES (1, 'CA'),
     (2, 'Concreto'),
@@ -16,4 +16,5 @@ INSERT INTO :PGSCHEMA.tipo_material
     (10, 'PEAD Corrugado'),
     (11, 'Aco'),
     (12, 'Tijolo');
+COMMIT;
 

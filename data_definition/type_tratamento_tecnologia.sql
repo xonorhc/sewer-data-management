@@ -1,8 +1,8 @@
+BEGIN;
 CREATE TABLE :PGSCHEMA.tipo_tratamento_tecnologia (
     id smallint PRIMARY KEY,
     tipo varchar UNIQUE NOT NULL
 );
-
 INSERT INTO :PGSCHEMA.tipo_tratamento_tecnologia
     VALUES (1, 'Decantacao primaria'),
     (2, 'Lagoa anaerobica'),
@@ -14,4 +14,5 @@ INSERT INTO :PGSCHEMA.tipo_tratamento_tecnologia
     (8, 'Flotacao'),
     (9, 'Desinfeccao'),
     (10, 'Outros - especificar na obs');
+COMMIT;
 
