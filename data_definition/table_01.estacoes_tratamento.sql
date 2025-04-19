@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 CREATE TABLE IF NOT EXISTS :PGSCHEMA.estacoes_tratamento (
-=======
-CREATE TABLE :PGSCHEMA.estacoes_tratamento (
->>>>>>> 1a429f4 (random commit)
     id serial PRIMARY KEY,
     geom geometry(point, :SRID) UNIQUE NOT NULL,
     nome varchar(50) UNIQUE NOT NULL,
